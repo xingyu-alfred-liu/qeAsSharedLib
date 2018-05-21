@@ -170,7 +170,7 @@ RANLIB         = ranlib
 
 FLIB_TARGETS   = all
 
-LIBOBJS        = $(TOPDIR)/clib/clib.a  $(TOPDIR)/iotk/src/libiotk.a
+LIBOBJS        = $(TOPDIR)/clib/clib.so  $(TOPDIR)/iotk/src/libiotk.a
 LIBS           = $(SCALAPACK_LIBS) $(LAPACK_LIBS) $(FOX_LIB) $(FFT_LIBS) $(BLAS_LIBS) $(MPI_LIBS) $(MASS_LIBS) $(HDF5_LIB)  $(LD_LIBS)
 
 # wget or curl - useful to download from network

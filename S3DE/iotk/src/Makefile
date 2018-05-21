@@ -120,7 +120,9 @@ OBJ_LIB= iotk_attr+CHARACTER1_0.o iotk_attr+COMPLEX1_0.o iotk_attr+COMPLEX1_3.o\
 
 # Macros to link the present library
 # (may be change by make.inc to the path of installed library)
-LIB_IOTK=libiotk.a
+#LIB_IOTK=libiotk.a
+LIB_IOTK=libiotk.so
+
 LIB_IOTK_INCLUDE=-I. -I$(IDEHOME)/iotk/include
 
 # Switch to enable actual compilation
@@ -165,10 +167,14 @@ loclib: libs loclib_only
 
 loclib_only: ide_$(LIB_IOTK_SWITCH)
 
-ide_internal: libiotk.a
+#ide_internal: libiotk.a
+ide_internal: libiotk.so
 
-ide_external: fake_external.a
+#ide_external: fake_external.a
+ide_external: fake_external.so
 
+
+# last time ended here and this is totally a mess
 fake_external.a:
 	touch $(OBJ_LIB)
 	touch libiotk.a
@@ -242,9 +248,12 @@ test.x: test.o libiotk.a
 
 # Targets for libraries
 # INFO make local library (without the used libraries)
-libiotk.a: $(OBJ_LIB)
-	$(AR) $(ARFLAGS) libiotk.a $(OBJ_LIB)
-	$(RANLIB) libiotk.a
+#libiotk.a: $(OBJ_LIB)
+#	$(AR) $(ARFLAGS) libiotk.a $(OBJ_LIB)
+#	$(RANLIB) libiotk.a
+
+libiotk.so: $(OBJ_LIB)
+	$(LDLIB) $(LDLIBFLAGS) libiotk.so $(OBJ_LIB)
 
 # INFO make all the used libs
 libs:
@@ -312,7 +321,7 @@ print_info:
 	@echo "  test8.x                        make program test8.x"
 	@echo "  test9.x                        make program test9.x"
 	@echo "  test.x                         make program test.x"
-	@echo "  libiotk.a                      make local library (without the used libraries)"
+	@echo "  libiotk.so                      make local library (without the used libraries)"
 	@echo "  libs                           make all the used libs"
 	@echo "  make                           make local Makefile"
 	@echo "  clean                          cleanup"
