@@ -16,8 +16,10 @@ ide_internal:
 ide_external:
 	cd src ; make ide_external
 
-fake_external.a:
-	cd src ; make fake_external.a
+# fake_external.a:
+#     cd src ; make fake_external.a
+fake_external.so:
+	cd src ; make fake_external.so
 
 example1.x:
 	cd src ; make example1.x
@@ -64,8 +66,11 @@ test9.x:
 test.x:
 	cd src ; make test.x
 
-libiotk.a:
-	cd src ; make libiotk.a
+#libiotk.a:
+#    cd src ; make libiotk.a
+
+libiotk.so:
+	cd src ; make libiotk.so
 
 libs:
 	cd src ; make libs

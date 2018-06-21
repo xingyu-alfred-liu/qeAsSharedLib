@@ -120,9 +120,8 @@ OBJ_LIB= iotk_attr+CHARACTER1_0.o iotk_attr+COMPLEX1_0.o iotk_attr+COMPLEX1_3.o\
 
 # Macros to link the present library
 # (may be change by make.inc to the path of installed library)
-#LIB_IOTK=libiotk.a
+# LIB_IOTK=libiotk.a
 LIB_IOTK=libiotk.so
-
 LIB_IOTK_INCLUDE=-I. -I$(IDEHOME)/iotk/include
 
 # Switch to enable actual compilation
@@ -167,93 +166,108 @@ loclib: libs loclib_only
 
 loclib_only: ide_$(LIB_IOTK_SWITCH)
 
-#ide_internal: libiotk.a
+# ide_internal: libiotk.a
 ide_internal: libiotk.so
 
-#ide_external: fake_external.a
 ide_external: fake_external.so
 
-
-# last time ended here and this is totally a mess
-fake_external.a:
+#     touch libiotk.a
+fake_external.so:
 	touch $(OBJ_LIB)
-	touch libiotk.a
-	touch fake_external.a
+	touch libiotk.so
+	touch fake_external.so
 # Targets for executables
 # INFO make program example1.x
-example1.x: example1.o libiotk.a
+# example1.x: example1.o libiotk.a
+example1.x: example1.o libiotk.so
 	make loclib_only
 	$(LD) $(LDFLAGS) -o example1.x example1.o $(AUTO_LIBS) $(MPI_LIBS) $(LD_LIBS)
 # INFO make program example2.x
-example2.x: example2.o libiotk.a
+# example2.x: example2.o libiotk.a
+example2.x: example2.o libiotk.so
 	make loclib_only
 	$(LD) $(LDFLAGS) -o example2.x example2.o $(AUTO_LIBS) $(MPI_LIBS) $(LD_LIBS)
 # INFO make program example3.x
-example3.x: example3.o libiotk.a
+# example3.x: example3.o libiotk.a
+example3.x: example3.o libiotk.so
 	make loclib_only
 	$(LD) $(LDFLAGS) -o example3.x example3.o $(AUTO_LIBS) $(MPI_LIBS) $(LD_LIBS)
 # INFO make program example4.x
-example4.x: example4.o libiotk.a
+# example4.x: example4.o libiotk.a
+example4.x: example4.o libiotk.so
 	make loclib_only
 	$(LD) $(LDFLAGS) -o example4.x example4.o $(AUTO_LIBS) $(MPI_LIBS) $(LD_LIBS)
 # INFO make program iotk_copy.x
-iotk_copy.x: iotk_copy.o libiotk.a
+# iotk_copy.x: iotk_copy.o libiotk.a
+iotk_copy.x: iotk_copy.o libiotk.so
 	make loclib_only
 	$(LD) $(LDFLAGS) -o iotk_copy.x iotk_copy.o $(AUTO_LIBS) $(MPI_LIBS) $(LD_LIBS)
 # INFO make program iotk.x
-iotk.x: iotk.o libiotk.a
+# iotk.x: iotk.o libiotk.a
+iotk.x: iotk.o libiotk.so
 	make loclib_only
 	$(LD) $(LDFLAGS) -o iotk.x iotk.o $(AUTO_LIBS) $(MPI_LIBS) $(LD_LIBS)
 # INFO make program iotk_print_kinds.x
-iotk_print_kinds.x: iotk_print_kinds.o libiotk.a
+# iotk_print_kinds.x: iotk_print_kinds.o libiotk.a
+iotk_print_kinds.x: iotk_print_kinds.o libiotk.so
 	make loclib_only
 	$(LD) $(LDFLAGS) -o iotk_print_kinds.x iotk_print_kinds.o $(AUTO_LIBS) $(MPI_LIBS) $(LD_LIBS)
 # INFO make program test2.x
-test2.x: test2.o libiotk.a
+# test2.x: test2.o libiotk.a
+test2.x: test2.o libiotk.so
 	make loclib_only
 	$(LD) $(LDFLAGS) -o test2.x test2.o $(AUTO_LIBS) $(MPI_LIBS) $(LD_LIBS)
 # INFO make program test3.x
-test3.x: test3.o libiotk.a
+# test3.x: test3.o libiotk.a
+test3.x: test3.o libiotk.so
 	make loclib_only
 	$(LD) $(LDFLAGS) -o test3.x test3.o $(AUTO_LIBS) $(MPI_LIBS) $(LD_LIBS)
 # INFO make program test4.x
-test4.x: test4.o libiotk.a
+# test4.x: test4.o libiotk.a
+test4.x: test4.o libiotk.so
 	make loclib_only
 	$(LD) $(LDFLAGS) -o test4.x test4.o $(AUTO_LIBS) $(MPI_LIBS) $(LD_LIBS)
 # INFO make program test5.x
-test5.x: test5.o libiotk.a
+# test5.x: test5.o libiotk.a
+test5.x: test5.o libiotk.so
 	make loclib_only
 	$(LD) $(LDFLAGS) -o test5.x test5.o $(AUTO_LIBS) $(MPI_LIBS) $(LD_LIBS)
 # INFO make program test6.x
-test6.x: test6.o libiotk.a
+# test6.x: test6.o libiotk.a
+test6.x: test6.o libiotk.so
 	make loclib_only
 	$(LD) $(LDFLAGS) -o test6.x test6.o $(AUTO_LIBS) $(MPI_LIBS) $(LD_LIBS)
 # INFO make program test7.x
-test7.x: test7.o libiotk.a
+# test7.x: test7.o libiotk.a
+test7.x: test7.o libiotk.so
 	make loclib_only
 	$(LD) $(LDFLAGS) -o test7.x test7.o $(AUTO_LIBS) $(MPI_LIBS) $(LD_LIBS)
 # INFO make program test8.x
-test8.x: test8.o libiotk.a
+# test8.x: test8.o libiotk.a
+test8.x: test8.o libiotk.so
 	make loclib_only
 	$(LD) $(LDFLAGS) -o test8.x test8.o $(AUTO_LIBS) $(MPI_LIBS) $(LD_LIBS)
 # INFO make program test9.x
-test9.x: test9.o libiotk.a
+# test9.x: test9.o libiotk.a
+test9.x: test9.o libiotk.so
 	make loclib_only
 	$(LD) $(LDFLAGS) -o test9.x test9.o $(AUTO_LIBS) $(MPI_LIBS) $(LD_LIBS)
 # INFO make program test.x
-test.x: test.o libiotk.a
+# test.x: test.o libiotk.a
+test.x: test.o libiotk.so
+
 	make loclib_only
 	$(LD) $(LDFLAGS) -o test.x test.o $(AUTO_LIBS) $(MPI_LIBS) $(LD_LIBS)
 
 
 # Targets for libraries
 # INFO make local library (without the used libraries)
-#libiotk.a: $(OBJ_LIB)
-#	$(AR) $(ARFLAGS) libiotk.a $(OBJ_LIB)
-#	$(RANLIB) libiotk.a
+# libiotk.a: $(OBJ_LIB)
+#     $(AR) $(ARFLAGS) libiotk.a $(OBJ_LIB)
+#         $(RANLIB) libiotk.a
 
 libiotk.so: $(OBJ_LIB)
-	$(LDLIB) $(LDLIBFLAGS) libiotk.so $(OBJ_LIB)
+	$(LDLIB) $(LDLIBFLAGS) -o libiotk.so $(OBJ_LIB)
 
 # INFO make all the used libs
 libs:
@@ -321,7 +335,7 @@ print_info:
 	@echo "  test8.x                        make program test8.x"
 	@echo "  test9.x                        make program test9.x"
 	@echo "  test.x                         make program test.x"
-	@echo "  libiotk.so                      make local library (without the used libraries)"
+	@echo "  libiotk.so                     make shared library (without the used libraries)"
 	@echo "  libs                           make all the used libs"
 	@echo "  make                           make local Makefile"
 	@echo "  clean                          cleanup"

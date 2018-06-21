@@ -44,8 +44,7 @@ libqefft.so : 	$(FFTX)
 
 fft_scalar.o : fft_scalar.f90  fft_scalar.FFTW3.f90  fft_scalar.FFTW.f90  fft_scalar.SX6.f90 fft_scalar.DFTI.f90  fft_scalar.ESSL.f90
 
-# look at this part again later, it's funny
-# also compare this with original one
+
 fft_stick.o : 
 	$(CC) $(CFLAGS)  -c  fft_stick.c fftw.c fftw.h konst.h
 
