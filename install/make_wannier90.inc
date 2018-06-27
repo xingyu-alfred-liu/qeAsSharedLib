@@ -2,7 +2,7 @@
 # WANNIER90 	
 #=======================================
 
-TOPDIR = /home/xingyu/espresso/qe-6.2.1
+TOPDIR = /home/xingyu/espresso/qe-passCommunicator
 
 F90=mpif90
 FCOPTS=$(FFLAGS) -x f95-cpp-input 

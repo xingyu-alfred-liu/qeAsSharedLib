@@ -1,11 +1,5 @@
 # make.inc.  Generated from make.inc.in by configure.
 
-# ++++++++++++++++++++++++++++++++++++++++++++++++++++
-# here is the two flags are needed in for compiling  +
-# pwscf as a library                                 +
-# -shared -fPIC                                      +
-# ++++++++++++++++++++++++++++++++++++++++++++++++++++
-
 # compilation rules
 
 .SUFFIXES :
@@ -33,10 +27,10 @@
 
 # Top QE directory, useful for locating libraries,  linking QE with plugins
 # The following syntax should always point to TOPDIR:
-# TOPDIR = $(dir $(abspath $(filter %make.inc,$(MAKEFILE_LIST))))
+TOPDIR = $(dir $(abspath $(filter %make.inc,$(MAKEFILE_LIST))))
 # if it doesn't work, uncomment the following line (edit if needed):
 
-TOPDIR = /home/xingyu/espresso/qe-passCommunicator
+# TOPDIR = /home/xingyu/espresso/qe-passCommunicator
 
 # DFLAGS  = precompilation options (possible arguments to -D and -U)
 #           used by the C compiler and preprocessor
@@ -74,7 +68,7 @@ MOD_FLAG      = -I
 
 MPIF90         = mpif90
 F90           = gfortran
-CC             = gcc
+CC             = cc
 F77            = gfortran
 
 # C preprocessor and preprocessing flags - for explicit preprocessing,
@@ -88,16 +82,14 @@ CPPFLAGS       = -P -traditional $(DFLAGS) $(IFLAGS)
 # C flags must include DFLAGS and IFLAGS
 # F90 flags must include MODFLAGS, IFLAGS, and FDFLAGS with appropriate syntax
 
-CFLAGS         = -O3 $(DFLAGS) $(IFLAGS) -fPIC
+CFLAGS         = -O3 $(DFLAGS) $(IFLAGS)
 F90FLAGS       = $(FFLAGS) -x f95-cpp-input $(FDFLAGS) $(IFLAGS) $(MODFLAGS)
-FFLAGS         = -O3 -g -fPIC
-#FFLAGS         = -O3 -g -shared -fPIC
+FFLAGS         = -O3 -g
 
 # compiler flags without optimization for fortran-77
 # the latter is NEEDED to properly compile dlamch.f, used by lapack
 
-FFLAGS_NOOPT   = -O0 -g -fPIC
-#FFLAGS_NOOPT   = -O0 -g -shared -fPIC
+FFLAGS_NOOPT   = -O0 -g
 
 # compiler flag needed by some compilers when the main program is not fortran
 # Currently used for Yambo
@@ -110,12 +102,7 @@ FFLAGS_NOMAIN   =
 
 LD             = mpif90
 LDFLAGS        =  -g -pthread
-#LDFLAGS        =  -g -pthread -shared -fPIC
 LD_LIBS        = 
-
-# create my own LD LDFLAGS in order to make the shared object
-LDLIB          = mpif90
-LDLIBFLAGS     =  -g -pthread -shared -fPIC
 
 # External Libraries (if any) : blas, lapack, fft, MPI
 
@@ -123,7 +110,7 @@ LDLIBFLAGS     =  -g -pthread -shared -fPIC
 # BLAS_LIBS = /your/path/to/espresso/LAPACK/blas.a
 # BLAS_LIBS_SWITCH = internal
 
-BLAS_LIBS      =   -L/opt/ohpc/pub/intel/intel16u4/compilers_and_libraries_2016.4.258/linux/mkl/lib/intel64_lin -lmkl_blas95_lp64
+BLAS_LIBS      =   -lmkl_gf_lp64  -lmkl_sequential -lmkl_core
 BLAS_LIBS_SWITCH = external
 
 # If you have nothing better, use the local copy via "--with-netlib" :
@@ -132,10 +119,10 @@ BLAS_LIBS_SWITCH = external
 # For IBM machines with essl (-D__ESSL): load essl BEFORE lapack !
 # remember that LAPACK_LIBS precedes BLAS_LIBS in loading order
 
-LAPACK_LIBS    = -L/opt/ohpc/pub/intel/intel16u4/compilers_and_libraries_2016.4.258/linux/mkl/lib/intel64_lin -lmkl_lapack95_lp64
+LAPACK_LIBS    = 
 LAPACK_LIBS_SWITCH = external
 
-SCALAPACK_LIBS = -L/opt/ohpc/pub/intel/intel16u4/compilers_and_libraries_2016.4.258/linux/mkl/lib/intel64_lin -lmkl_scalapack_lp64 -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lmkl_blacs_intelmpi_lp64 -lpthread -lm
+SCALAPACK_LIBS = 
 
 # nothing needed here if the the internal copy of FFTW is compiled
 # (needs -D__FFTW in DFLAGS)
@@ -144,8 +131,9 @@ FFT_LIBS       =
 
 # HDF5
 HDF5_LIB = 
-FOX_LIB  = -L$(TOPDIR)/FoX/lib  -lFoX_dom -lFoX_sax -lFoX_wxml -lFoX_common\
-            -lFoX_utils -lFoX_fsys 
+# FOX_LIB  = -L$(TOPDIR)/FoX/lib  -lFoX_dom -lFoX_sax -lFoX_wxml -lFoX_common -lFoX_utils -lFoX_fsys
+FOX_LIB  = -L$(TOPDIR)/FoX/lib  -LFoX_dom -LFoX_sax -LFoX_wxml -LFoX_common\
+            -LFoX_utils -LFoX_fsys 
 
 # For parallel execution, the correct path to MPI libraries must
 # be specified in MPI_LIBS (except for IBM if you use mpxlf)
@@ -170,8 +158,8 @@ RANLIB         = ranlib
 
 FLIB_TARGETS   = all
 
+# WARNING!!!
 # LIBOBJS        = $(TOPDIR)/clib/clib.a  $(TOPDIR)/iotk/src/libiotk.a
-
 LIBOBJS        = $(TOPDIR)/clib/clib.so  $(TOPDIR)/iotk/src/libiotk.so
 LIBS           = $(SCALAPACK_LIBS) $(LAPACK_LIBS) $(FOX_LIB) $(FFT_LIBS) $(BLAS_LIBS) $(MPI_LIBS) $(MASS_LIBS) $(HDF5_LIB)  $(LD_LIBS)
 
@@ -180,8 +168,3 @@ WGET = wget -O
 
 # Install directory - not currently used
 PREFIX = /usr/local
-
-
-# some things from FHI-aims
-# LAPACKBLAS = -L/opt/ohpc/pub/intel/intel16u4/compilers_and_libraries_2016.4.258/linux/mkl/lib/intel64_lin -lmkl_lapack95_lp64 -lmkl_blas95_lp64
-# SCALAPACK = -L/opt/ohpc/pub/intel/intel16u4/compilers_and_libraries_2016.4.258/linux/mkl/lib/intel64_lin -lmkl_scalapack_lp64 -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lmkl_blacs_intelmpi_lp64 -lpthread -lm

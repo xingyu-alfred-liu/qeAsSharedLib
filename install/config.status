@@ -433,7 +433,7 @@ Copyright (C) 2012 Free Software Foundation, Inc.
 This config.status script is free software; the Free Software Foundation
 gives unlimited permission to copy, distribute and modify it."
 
-ac_pwd='/home/xingyu/espresso/qe-6.2.1'
+ac_pwd='/home/xingyu/espresso/qe-passCommunicator'
 srcdir='./install'
 test -n "$AWK" || AWK=awk
 # The default lists apply if the user does not specify any file.
@@ -607,7 +607,7 @@ cat >>"$ac_tmp/subs1.awk" <<\_ACAWK &&
 S["LTLIBOBJS"]=""
 S["LIBOBJS"]=""
 S["extlib_flags"]=""
-S["topdir"]="/home/xingyu/espresso/qe-6.2.1"
+S["topdir"]="/home/xingyu/espresso/qe-passCommunicator"
 S["ld_libs"]=""
 S["iflags"]="-I$(TOPDIR)/include -I$(TOPDIR)/FoX/finclude -I../include/ -I/opt/ohpc/pub/intel/intel16u4/compilers_and_libraries_2016.4.258/linux/mkl/include"
 S["fdflags"]="$(DFLAGS) $(MANUAL_DFLAGS)"

@@ -27,8 +27,6 @@ uname -v = #1 SMP Wed Apr 12 15:04:24 UTC 2017
 /usr/bin/oslevel       = unknown
 /bin/universe          = unknown
 
-PATH: /home/xingyu/anaconda3/bin
-PATH: /home/xingyu/anaconda2/bin
 PATH: /home/xingyu/miniconda2/bin
 PATH: /opt/ohpc/pub/intel/intel16u4/compilers_and_libraries_2016.4.258/linux/mpi/intel64/bin
 PATH: /opt/ohpc/pub/intel/intel16u4/compilers_and_libraries_2016.4.258/linux/bin/intel64
@@ -293,8 +291,8 @@ configure:4846: checking whether make sets $(MAKE)
 configure:4868: result: yes
 configure:5540: checking for library containing dgemm
 configure:5558: gfortran -o conftest -O3 -g  -x f95-cpp-input  -g -pthread   conftest.f  >&5
-/tmp/cculfBTH.o: In function `main':
-/home/xingyu/espresso/qe-6.2.1/conftest.f:2: undefined reference to `dgemm_'
+/tmp/ccR6IuH4.o: In function `main':
+/home/xingyu/espresso/qe-passCommunicator/conftest.f:2: undefined reference to `dgemm_'
 collect2: error: ld returned 1 exit status
 configure:5558: $? = 1
 configure: failed program was:
@@ -459,8 +457,8 @@ configure:8097: $? = 0
 configure:8114: result: none required
 configure:8195: checking for library containing pdgemr2d
 configure:8213: mpif90 -o conftest -O3 -g  -x f95-cpp-input -g -pthread conftest.f  >&5
-/tmp/ccyrAC6G.o: In function `main':
-/home/xingyu/espresso/qe-6.2.1/conftest.f:2: undefined reference to `pdgemr2d_'
+/tmp/ccHoXYyu.o: In function `main':
+/home/xingyu/espresso/qe-passCommunicator/conftest.f:2: undefined reference to `pdgemr2d_'
 collect2: error: ld returned 1 exit status
 configure:8213: $? = 1
 configure: failed program was:
@@ -468,8 +466,8 @@ configure: failed program was:
 |       call pdgemr2d
 |       end
 configure:8213: mpif90 -o conftest -O3 -g  -x f95-cpp-input -g -pthread conftest.f  >&5
-/tmp/ccDbYoeJ.o: In function `main':
-/home/xingyu/espresso/qe-6.2.1/conftest.f:2: undefined reference to `pdgemr2d_'
+/tmp/ccTAiW6D.o: In function `main':
+/home/xingyu/espresso/qe-passCommunicator/conftest.f:2: undefined reference to `pdgemr2d_'
 collect2: error: ld returned 1 exit status
 configure:8213: $? = 1
 configure: failed program was:
@@ -479,8 +477,8 @@ configure: failed program was:
 configure:8230: result: no
 configure:8250: checking for library containing pdgemr2d
 configure:8268: mpif90 -o conftest -O3 -g  -x f95-cpp-input -g -pthread conftest.f    -lmkl_gf_lp64  -lmkl_sequential -lmkl_core >&5
-/tmp/ccgV3q5V.o: In function `main':
-/home/xingyu/espresso/qe-6.2.1/conftest.f:2: undefined reference to `pdgemr2d_'
+/tmp/ccjneRDR.o: In function `main':
+/home/xingyu/espresso/qe-passCommunicator/conftest.f:2: undefined reference to `pdgemr2d_'
 collect2: error: ld returned 1 exit status
 configure:8268: $? = 1
 configure: failed program was:
@@ -821,7 +819,7 @@ scalapack_line='@delete@'
 sharedstatedir='${prefix}/com'
 sysconfdir='${prefix}/etc'
 target_alias=''
-topdir='/home/xingyu/espresso/qe-6.2.1'
+topdir='/home/xingyu/espresso/qe-passCommunicator'
 wget='wget -O'
 
 ## ----------- ##
